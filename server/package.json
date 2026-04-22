@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "json-server": "^0.17.4",
+    "pg": "^8.20.0",
+    "zod": "^4.3.6"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
