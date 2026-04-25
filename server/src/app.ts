@@ -7,8 +7,8 @@ import type { Request, Response, NextFunction } from "express";
 //Routers imports:
 import usersRouter from "./features/users/router.js";
 import playersRouter from "./features/players/router.js";
+import npcsRouter from "./features/npcs/router.js";
 //import campaignsRouter from "./features/campaigns/router.js";
-//import npcsRouter from "./features/npcs/router.js";
 
 const app = express();
 
@@ -24,8 +24,10 @@ app.get("/health", (_req: Request, res: Response) => {
 });
 
 //Routers
-app.use("/api/v1/users", usersRouter)
-app.use("/api/v1/players", playersRouter)
+app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/players", playersRouter);
+app.use("/api/v1/npcs", npcsRouter);
+//app.use("api/v1/campaigns". campaignsRouter);
 
 //404
 app.use((_req: Request, res: Response) => {

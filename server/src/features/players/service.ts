@@ -1,7 +1,7 @@
 import pool from "../../db/pool.js";
 
 export async function getPlayers(campId) {
-    const { rows } = await pool.query(`SELECT * FROM players where campaign_id = ${campId}`);
+    const { rows } = await pool.query(`SELECT * FROM players WHERE campaign_id = ${campId}`);
     return rows;
 }
 
