@@ -1,5 +1,9 @@
 import * as service from "./service.js";
 
+//TODO: Check if logic for these should go here or in services.
+//TODO: Refine error messages
+//TODO: typescript I 'spose
+
 export async function getAll(req, res) {
     try {
         const users = await service.getAllUsers();
