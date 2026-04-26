@@ -7,22 +7,22 @@ export async function getAll(req, res) {
         const camps = await service.getCampaigns(userId);
         res.json(camps);
     } catch (err) {
-        console.error("Error in campaigns controller", (err as Error).message);
+        console.error("Error in campaigns controller: ", (err as Error).message);
         res.status(500).json({ error: "Failed to fetch all campaigns" });
     }
 }
 
 export async function newCampaign(req, res) {
     const userId = Number(req.params.userId);
-    const campaignName = req.body.name;
-    if (!campaignName) {
-        return res.status(500).json({ error: "Improper campaign format"});
+    const { name } = req.body;
+    if (!name) {
+        return res.status(500).json({ error: "Improper body format"});
     }
     try {
-        const camp = await service.createCampaign(campaignName, userId)
+        const camp = await service.createCampaign(name, userId)
         res.json(camp);
    } catch (err) {
-        console.error("Error in campaignscontroller", (err as Error).message);
+        console.error("Error in campaigns controller: ", (err as Error).message);
         res.status(500).json({ error: "Failed to create campaign" });
    }
 }
@@ -33,34 +33,33 @@ export async function selectCampaign(req, res) {
         const camp = await service.resetCampaignRecency(campId);
         res.json(camp);
    } catch (err) {
-        console.error("Error in campaigns controller", (err as Error).message);
-        res.status(500).json({ error: "Failed to create campaign" });
+        console.error("Error in campaigns controller: ", (err as Error).message);
+        res.status(500).json({ error: "Failed to select campaign" });
    }
 }
 
 export async function editCampaign(req, res) {
     const campId = Number(req.params.campId);
-    const newName = req.body.name
-    if (!newName) {
-        return res.status(500).json({ error: "Improper campaign format"});
+    const {name} = req.body
+    if (!name) {
+        return res.status(500).json({ error: "Improper body format"});
     }
     try {
-        const npc = await service.modifyCampaign(newName, campId);
+        const npc = await service.modifyCampaign(name, campId);
         res.json(npc);
    } catch (err) {
-        console.error("Error in campaigns controller", (err as Error).message);
-        res.status(500).json({ error: "Failed to patch campaigns" });
+        console.error("Error in campaigns controller: ", (err as Error).message);
+        res.status(500).json({ error: "Failed to edit campaign" });
    }
 }
 
 export async function removeCampaign(req, res) {
-    //TODO: validate
     const campId = Number(req.params.campId);
     try {
         const camp = await service.deleteCampaign(campId);
         res.json(camp);
    } catch (err) {
-        console.error("Error in campaigns controller", (err as Error).message);
-        res.status(500).json({ error: "Failed to delete campaigns" });
+        console.error("Error in campaigns controller: ", (err as Error).message);
+        res.status(500).json({ error: "Failed to delete campaign" });
    }
 }

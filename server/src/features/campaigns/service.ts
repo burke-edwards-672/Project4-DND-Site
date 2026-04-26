@@ -6,6 +6,8 @@ export async function getCampaigns(userId) {
 }
 
 async function updateRecency(userId) {
+    //"recency" column in campaigns table keeps track of the order in which they've all been opened last.
+    //0 is the lowest, and is unique to the most-recently-opened campaign.
     await pool.query(`
     UPDATE campaigns
     SET recency = recency + 1
@@ -14,7 +16,6 @@ async function updateRecency(userId) {
 }
 
 export async function resetCampaignRecency(campId) {
-    //Todo: Three whole queries, gross
     const { rows } = await pool.query(`SELECT * FROM campaigns WHERE id = ${campId}`);
     if (rows[0].user_id) {
         await updateRecency(rows[0].user_id)
@@ -23,7 +24,6 @@ export async function resetCampaignRecency(campId) {
 }
 
 export async function createCampaign(name, userId) {
-    //TODO: Vet this one so that it only changes the values provided to it.
     await updateRecency(userId);
     const { rows } = await pool.query(`
     INSERT INTO campaigns (user_id, campaign_name)

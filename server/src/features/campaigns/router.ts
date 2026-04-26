@@ -7,12 +7,10 @@ import { removeCampaign } from "./controller.js";
 
 const router = Router();
 
-//TODO: Make better routes, cuz these are a little clunky to remember
-
 router.get("/:userId", getAll);
 router.post("/:userId", newCampaign);
-router.patch("/recency/:campId", selectCampaign)
-router.patch("/:campId", editCampaign);
-router.delete("/:campId", removeCampaign);
+router.patch("/selecty/:campId", selectCampaign)
+router.patch("/single/:campId", editCampaign);
+router.delete("/single/:campId", removeCampaign);
 
 export default router;
