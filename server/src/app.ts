@@ -9,6 +9,7 @@ import usersRouter from "./features/users/router.js";
 import playersRouter from "./features/players/router.js";
 import npcsRouter from "./features/npcs/router.js";
 import campaignsRouter from "./features/campaigns/router.js";
+import eventsRouter from "./features/events/router.js";
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/players", playersRouter);
 app.use("/api/v1/npcs", npcsRouter);
 app.use("/api/v1/campaigns", campaignsRouter);
+app.use("/api/v1/events", eventsRouter);
 
 //404
 app.use((_req: Request, res: Response) => {
