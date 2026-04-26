@@ -9,7 +9,7 @@ const router = Router();
 
 router.get("/:userId", getAll);
 router.post("/:userId", newCampaign);
-router.patch("/selecty/:campId", selectCampaign)
+router.patch("/select/:campId", selectCampaign)
 router.patch("/single/:campId", editCampaign);
 router.delete("/single/:campId", removeCampaign);
 

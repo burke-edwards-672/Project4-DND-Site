@@ -3,7 +3,6 @@ import * as service from "./service.js";
 
 export async function getAll(req, res) {
     const campId = Number(req.params.campId);
-    console.log(campId);
     try {
         const camps = await service.getEvents(campId);
         res.json(camps);

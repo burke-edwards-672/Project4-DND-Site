@@ -1,7 +1,6 @@
 import pool from "../../db/pool.js";
 
 export async function getEvents(campId) {
-    console.log(campId)
     const { rows } = await pool.query(`SELECT * FROM events WHERE campaign_id = ${campId} ORDER BY time;`);
     return rows;
 }
