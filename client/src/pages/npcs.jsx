@@ -1,3 +1,9 @@
 //Relatively simple page for sending requests to npcs route.
 
-export default function Npcs() {}
+export default function Npcs() {
+    return (
+        <main>
+            Npcs screen
+        </main>
+    );
+}

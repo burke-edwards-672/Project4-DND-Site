@@ -1,5 +1,11 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
+import Selection from "./pages/selection";
+import Dashboard from "./pages/dashboard";
+import Players from "./pages/players";
+import Npcs from "./pages/npcs";
+import Entrance from "./pages/entrance";
+
 function App() {
   return (
     <BrowserRouter>

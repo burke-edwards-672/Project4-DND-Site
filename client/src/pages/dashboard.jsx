@@ -9,4 +9,10 @@
 // ----- npcs
 // - Navigation back to selection, players, and npcs.
 
-export default function Dashboard() {}
+export default function Dashboard() {
+    return (
+        <main>
+            Dashboard screen
+        </main>
+    );
+}

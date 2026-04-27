@@ -25,6 +25,8 @@ async function fetcher(path, options) {
 
 //It's probably very unconventional to have a get request that needs a body to work.
 //Food for thought :D
+
+//More food for thought is to just split this up into multiple modules lol
 export function getUserCampaigns(userId) {
     return fetcher(`/campaigns/${userId}`);
 }
