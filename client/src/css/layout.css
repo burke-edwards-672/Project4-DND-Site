@@ -1,5 +1,26 @@
 /*Please make an effort to split this up into multiple files next time! Use the precedence feature in stylesheet links. */
 
+main {
+    margin: 20px;
+}
+
+.campaign, .event, .player {
+    margin-top: 10px;
+    background-color: rgb(230, 230, 230);
+}
+
+.event-form, .player-form {
+    background-color: rgb(220, 220, 220);
+}
+
+a {
+    display: block;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
 .table {
     position: relative;
     margin: auto;

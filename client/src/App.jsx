@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Selection userSetter={setUser}/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/players" element={<Players />} />
-          <Route path="*" element={<Entrance />} />
+          <Route path="*" element={<Selection userSetter={setUser}/>} />
         </Routes>
       </UserContext>
     </BrowserRouter>

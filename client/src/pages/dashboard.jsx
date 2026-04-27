@@ -3,7 +3,7 @@
 import { useState, useLayoutEffect, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { getUserCampaigns, changeCampaignName, getEvents, addEvent, editEvent, deleteEvent } from '../lib/api.js';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -76,19 +76,19 @@ export default function Dashboard({userSetter}) {
 
     function mapEvs() {
         if (evs.length === 0) {
-            return (<p>Couldn't get campaign events</p>)
+            return (<p>No events found!</p>)
         }
         return evs.map(ev => 
             (<Container key={ev.id}>
-                <Row>
-                    <Col>{ev.id}</Col>
+                <Row className="event">
+                    <Col>ID: {ev.id}</Col>
                     <Col>{ev.event_desc}</Col>
                     <Col><Button variant="danger" onClick={(e) => killEv(e, ev.id)}>Delete</Button></Col>
                 </Row>
-                <Row>
+                <Row className="event-form">
                     <Col>
                         <form onSubmit={(e) => handleSubmit(e, ev.id)}>
-                            <input name="newDesc"/>
+                            <label>Description<input name="newDesc"/></label>
                             <button type="submit">Confirm</button>
                         </form>
                     </Col>
@@ -100,20 +100,23 @@ export default function Dashboard({userSetter}) {
 
     return (
         <main>
+            <Link to="/" >Homepage</Link>
+            <Link to="/players" >Players</Link>
             <h1>{camp.campaign_name}</h1>
+
+            <form onSubmit={handleNameChange}>
+                <label>Campaign Name<input name="newName"/></label>
+                <button type="submit">Confirm</button>
+            </form>
+
+            <p>Edit the name of the campaign with the form above!</p>
+            <p>Or add/edit/delete story events below.</p>
 
             <ButtonToolbar aria-label="toolbar">
                 <ButtonGroup aria-label="interact">
                     <Button variant="success" onClick={makeEv} >New</Button>
                 </ButtonGroup>
             </ButtonToolbar>
-
-            <form onSubmit={handleNameChange}>
-                <input name="newName"/>
-                <button type="submit">Confirm</button>
-            </form>
-
-
 
             <div>
                 {mapEvs()}

@@ -54,7 +54,7 @@ export default function Selection({userSetter}) {
         }
         return camps.map(camp => 
             (
-                <Row key={camp.id} onClick={() => gotoCamp(camp.id)}>
+                <Row className="campaign" key={camp.id} onClick={() => gotoCamp(camp.id)}>
                     <Col>ID: {camp.id}</Col>
                     <Col>{camp.campaign_name}</Col>
                     <Col><Button variant="danger" onClick={(e) => killCamp(e, camp.id)}>Delete</Button></Col>
