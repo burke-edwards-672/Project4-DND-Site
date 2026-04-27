@@ -71,7 +71,7 @@ export function addEvent(campId, evDesc, evTime) {
     }); 
 }
 
-export function editEvent(eventId, desc, time) {
+export function editEvent(eventId, evDesc, evTime) {
     return fetcher(`/events/single/${eventId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

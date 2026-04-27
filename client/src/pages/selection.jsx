@@ -3,6 +3,7 @@
 import { useState, useLayoutEffect, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { getUserCampaigns, addCampaign, selectCampaign, deleteCampaign } from '../lib/api.js';
+import { useNavigate } from 'react-router';
 
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -12,6 +13,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 export default function Selection({userSetter}) {
+    let navigate = useNavigate();
 
     const [camps, setCamps] = useState([]);
     const userId = useContext(UserContext);
@@ -38,13 +40,11 @@ export default function Selection({userSetter}) {
     }
 
     function gotoCamp(campId) {
-        console.log("tried to goto");
-        selectCampaign(campId).finally(res => refreshCamps());
+        selectCampaign(campId).finally(res => navigate("/dashboard"));
     }
 
     function killCamp(e, campId) {
         e.stopPropagation();
-        console.log("tried to delete");
         deleteCampaign(campId).finally(res => refreshCamps());
     }
 
