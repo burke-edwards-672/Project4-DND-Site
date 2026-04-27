@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000"l
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
 if (!API_BASE_URL) {
     throw new Error("No valid API URL found");
@@ -35,104 +35,104 @@ export function addCampaign(userId, campName) {
     return fetcher(`/campaigns/${userId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json"},
-        body: { name: campName }
+        body: JSON.stringify({ name: campName })
     });
 }
 
 export function selectCampaign(campId) {
-    return fetcher(`campaigns/select/${campId}`, {
+    return fetcher(`/campaigns/select/${campId}`, {
         method: "PATCH"
     }); 
 }
 
 export function changeCampaignName(campId, campName) {
-    return fetcher(`campaigns/single/${campId}`, {
+    return fetcher(`/campaigns/single/${campId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: { name: campName }
+        body: JSON.stringify({ name: campName })
     }); 
 }
 
 export function deleteCampaign(campId) {
-    return fetcher(`campaigns/single/${campId}`, {
+    return fetcher(`/campaigns/single/${campId}`, {
         method: "DELETE"
     }); 
 }
 
 export function getEvents(campId) {
-    return fetcher(`events/${campId}`);
+    return fetcher(`/events/${campId}`);
 }
 
 export function addEvent(campId, evDesc, evTime) {
-    return fetcher(`events/${campId}`, {
+    return fetcher(`/events/${campId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: { desc: evDesc, time: evTime }
+        body: JSON.stringify({ desc: evDesc, time: evTime })
     }); 
 }
 
 export function editEvent(eventId, desc, time) {
-    return fetcher(`events/single/${eventId}`, {
+    return fetcher(`/events/single/${eventId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: { desc: evDesc, time: evTime }
+        body: JSON.stringify({ desc: evDesc, time: evTime })
     }); 
 }
 
 export function deleteEvent(eventId) {
-    return fetcher(`events/single/${eventId}`, {
+    return fetcher(`/events/single/${eventId}`, {
         method: "DELETE",
     }); 
 }
 
 export function getPlayers(campId) {
-    return fetcher(`players/${campId}`)
+    return fetcher(`/players/${campId}`)
 }
 
 export function addPlayer(campId, plName, plDesc, plAlign) {
-    return fetcher(`players/${campId}`, {
+    return fetcher(`/players/${campId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: { name: plName, desc: plDesc, align: plAlign }
+        body: JSON.stringify({ name: plName, desc: plDesc, align: plAlign })
     }); 
 }
 
 export function editPlayer(playerId, plName, plDesc, plAlign) {
-    return fetcher(`players/${playerId}`, {
+    return fetcher(`/players/${playerId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: { name: plName, desc: plDesc, align: plAlign }
+        body: JSON.stringify({ name: plName, desc: plDesc, align: plAlign })
     }); 
 }
 
 export function deletePlayer(playerId) {
-    return fetcher(`players/${playerId}`, {
+    return fetcher(`/players/${playerId}`, {
         method: "DELETE",
     }); 
 }
 
 export function getNpcs(campId) {
-    return fetcher(`npcs/${campId}`)
+    return fetcher(`/npcs/${campId}`)
 }
 
 export function addNpc(campId, npcName, npcDesc, npcAlign) {
-    return fetcher(`npcs/${campId}`, {
+    return fetcher(`/npcs/${campId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: { name: npcName, desc: npcDesc, align: npcAlign }
+        body: JSON.stringify({ name: npcName, desc: npcDesc, align: npcAlign })
     }); 
 }
 
 export function editNpc(npcId, npcName, npcDesc, npcAlign) {
-    return fetcher(`npcs/${npcId}`, {
+    return fetcher(`/npcs/${npcId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: { name: npcName, desc: npcDesc, align: npcAlign }
+        body: JSON.stringify({ name: npcName, desc: npcDesc, align: npcAlign })
     }); 
 }
 
 export function deleteNpc(npcId) {
-    return fetcher(`npcs/${npcId}`, {
+    return fetcher(`/npcs/${npcId}`, {
         method: "DELETE",
     }); 
 }

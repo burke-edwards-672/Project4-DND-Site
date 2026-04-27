@@ -1,4 +1,5 @@
 //The intended landing page of the site, purely for thematics. Only includes a link to the login.
+//currently being used to test new features.
 
 export default function Entrance() {
     return (
