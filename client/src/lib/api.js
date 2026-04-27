@@ -98,7 +98,7 @@ export function addPlayer(campId, plName, plDesc, plAlign) {
 }
 
 export function editPlayer(playerId, plName, plDesc, plAlign) {
-    return fetcher(`/players/${playerId}`, {
+    return fetcher(`/players/single/${playerId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: plName, desc: plDesc, align: plAlign })
@@ -106,7 +106,7 @@ export function editPlayer(playerId, plName, plDesc, plAlign) {
 }
 
 export function deletePlayer(playerId) {
-    return fetcher(`/players/${playerId}`, {
+    return fetcher(`/players/single/${playerId}`, {
         method: "DELETE",
     }); 
 }
@@ -124,7 +124,7 @@ export function addNpc(campId, npcName, npcDesc, npcAlign) {
 }
 
 export function editNpc(npcId, npcName, npcDesc, npcAlign) {
-    return fetcher(`/npcs/${npcId}`, {
+    return fetcher(`/npcs/single/${npcId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: npcName, desc: npcDesc, align: npcAlign })
@@ -132,7 +132,7 @@ export function editNpc(npcId, npcName, npcDesc, npcAlign) {
 }
 
 export function deleteNpc(npcId) {
-    return fetcher(`/npcs/${npcId}`, {
+    return fetcher(`/npcs/single/${npcId}`, {
         method: "DELETE",
     }); 
 }
