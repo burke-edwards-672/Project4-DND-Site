@@ -2,7 +2,7 @@
 
 import { useState, useLayoutEffect, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-import { getUserCampaigns, getEvents, addEvent, editEvent, deleteEvent } from '../lib/api.js';
+import { getUserCampaigns, changeCampaignName, getEvents, addEvent, editEvent, deleteEvent } from '../lib/api.js';
 import { useNavigate } from 'react-router';
 
 import Button from 'react-bootstrap/Button';
@@ -24,13 +24,21 @@ export default function Dashboard({userSetter}) {
             .then(res => {
                 setCamp(res[0]);
                 refreshEvents(res[0].id);
-            })
+            });
     }, [userId]);
 
     //camp.id is from the useState thing, but might sometimes not be up to date.
     function refreshEvents(campId) {
         getEvents(campId || camp.id)
             .then(res => setEvs(res));
+    }
+
+    function refreshCampName(campId) {
+
+        getUserCampaigns(userId)
+            .then(res => {
+                setCamp(res[0]);
+            });
     }
 
     function makeEv() {
@@ -54,6 +62,16 @@ export default function Dashboard({userSetter}) {
         const desc = Object.fromEntries(formData.entries()).newDesc;
 
         editEv(id, desc, "0001-01-01 01:00:00"); 
+    }
+
+    function handleNameChange(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const newName = Object.fromEntries(formData.entries()).newName;
+
+        changeCampaignName(camp.id, newName).then(res => refreshCampName(camp.id));
     }
 
     function mapEvs() {
@@ -82,11 +100,20 @@ export default function Dashboard({userSetter}) {
 
     return (
         <main>
+            <h1>{camp.campaign_name}</h1>
+
             <ButtonToolbar aria-label="toolbar">
                 <ButtonGroup aria-label="interact">
                     <Button variant="success" onClick={makeEv} >New</Button>
                 </ButtonGroup>
             </ButtonToolbar>
+
+            <form onSubmit={handleNameChange}>
+                <input name="newName"/>
+                <button type="submit">Confirm</button>
+            </form>
+
+
 
             <div>
                 {mapEvs()}

@@ -65,12 +65,10 @@ export default function Selection({userSetter}) {
 
     return (
         <main>
-            <ButtonToolbar aria-label="toolbar">
-                <ButtonGroup aria-label="scroll">
-                    <Button variant="dark" onClick={editUserDown}>Left</Button>
-                    <Button variant="dark" onClick={editUserUp}>Right</Button>
-                </ButtonGroup>
+            <h1>Campaigns</h1>
+            <p>Click one to be redirected to its events!</p>
 
+            <ButtonToolbar aria-label="toolbar">
                 <ButtonGroup aria-label="interact">
                     <Button variant="success" onClick={makeCamp} >New</Button>
                 </ButtonGroup>
